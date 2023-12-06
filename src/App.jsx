@@ -1,10 +1,11 @@
 import './App.css'
+import { HomePage } from './Pages/HomePage/HomePage'
 
 const App = () => {
 
   return (
     <div className='App'>
-      <h1>Firebase</h1>
+      <HomePage />
     </div>
   )
 }
