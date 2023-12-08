@@ -11,19 +11,14 @@ import store from "./redux/store.js";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { HomePage } from "./Pages/HomePage.jsx";
 
-// ReactDOM.render(
-//     <Provider store={store}>
-//       <App />
-//     </Provider>,
-//   document.getElementById('root')
-// )
+
 const router = createBrowserRouter([
   {
-    path: "/vite-react-router/",
+    path: "/react-firebase/",
     element: <App />,
     children: [
       {
-        path: "/vite-react-router/",
+        path: "/react-firebase/",
         element: <HomePage />,
       },
     ],

@@ -8,7 +8,7 @@ const NavigationComponent = () => {
 
             <ul className="navbar-nav ms-auto me-5">
                 <li className="nav-item mx-2">
-                    <a href="/login" className="btn btn-primary btn-sm">
+                    <a href="/login" className="btn btn-primary btn-sm ">
                         Login
                     </a>
                 </li>
