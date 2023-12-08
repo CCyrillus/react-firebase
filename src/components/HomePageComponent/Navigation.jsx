@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const NavigationComponent = () => {
     return (
@@ -8,14 +9,14 @@ const NavigationComponent = () => {
 
             <ul className="navbar-nav ms-auto me-5">
                 <li className="nav-item mx-2">
-                    <a href="/login" className="btn btn-primary btn-sm ">
+                    <Link to="/react-firebase/login" className="btn btn-primary btn-sm ">
                         Login
-                    </a>
+                    </Link>
                 </li>
                 <li className="nav-item">
-                    <a href="/register" className="btn btn-success btn-sm">
+                    <Link to="/react-firebase/register" className="btn btn-success btn-sm">
                         Register
-                    </a>
+                    </Link>
                 </li>
             </ul>
 
