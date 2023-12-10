@@ -23,7 +23,7 @@ const LoginForm = () => {
     }
     React.useEffect(() => {
         if (success) {
-            navigate("/dashboard")
+            navigate("/react-firebase/dashboard")
         }
     }, [success]);
 
