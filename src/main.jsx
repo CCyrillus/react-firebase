@@ -6,19 +6,16 @@ import './index.css'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 
-import store from "./redux/store.js";
+import store from "./app/store";
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { HomePage } from "./Pages/HomePage/HomePage.jsx";
-import Login from "./Pages/AuthPage/Login/Login.jsx";
-import Register from "./Pages/AuthPage/Register/Register.jsx";
-
-
+import { Login, Register, HomePage, DashboardPage } from "./Pages/index.js";
+import { Provider } from "react-redux";
 
 
 const router = createBrowserRouter([
   {
-    path: "/react-firebase/",
+    path: "/",
     element: <App />,
     children: [
       {
@@ -33,13 +30,20 @@ const router = createBrowserRouter([
         path: "/react-firebase/register",
         element: <Register />,
       },
+      {
+        path: "/react-firebase/dashboard",
+        element: <DashboardPage />,
+      },
     ],
   },
 ]);
 
+
 ReactDOM.render(
   <React.StrictMode>
-    <RouterProvider router={router} store={store}/>
+    <Provider store={store}>
+      <RouterProvider router={router}  />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

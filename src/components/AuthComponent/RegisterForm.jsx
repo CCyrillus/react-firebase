@@ -1,4 +1,7 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { signUpUser } from '../../redux/actionCreators/authActionsCreator';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
 
@@ -6,9 +9,33 @@ const RegisterForm = () => {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [passwordConfirm, setPasswordConfirm] = React.useState("");
+    const [success, setSuccess] = React.useState(false);
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!email || !password || !passwordConfirm || !name) {
+            alert("Please fill form correct");
+            return;
+        }
+        if (password !== passwordConfirm) {
+            alert("I ncorrect password");
+            return;
+        }
+
+        dispatch(signUpUser(name, email, password, setSuccess));
+    };
+
+    React.useEffect(() => {
+        if(success){
+            navigate("/dashboard")
+        }
+    }, [success]);
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <div className="form-group my-2">
                 <input
                     type="name"
