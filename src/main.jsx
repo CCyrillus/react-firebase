@@ -15,7 +15,7 @@ import { Provider } from "react-redux";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/react-firebase/",
     element: <App />,
     children: [
       {
