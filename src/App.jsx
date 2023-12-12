@@ -15,13 +15,7 @@ const App = () => {
 
   return (
     <>
-      <nav>
-        <Link to="/react-firebase/">
-          Home
-        </Link>
-
         <Outlet />
-      </nav>
     </>
   )
 }
