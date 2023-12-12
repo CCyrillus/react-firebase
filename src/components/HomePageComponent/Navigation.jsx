@@ -6,7 +6,7 @@ import { SignOutUser } from "../../redux/actionCreators/authActionsCreator";
 
 const NavigationComponent = () => {
 
-    const { isAuthenticated, user } = useSelector(state => state.auth);
+    const { isAuthenticated, user } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 
     return (

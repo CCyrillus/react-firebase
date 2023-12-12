@@ -67,7 +67,7 @@ export const SignOutUser = () => (dispatch) => {
     .auth()
     .signOut()
     .then(() => {
-        dispatch(logoutUser());
+        dispatch(logoutUser())
     })
     dispatch(logoutUser());
 }
