@@ -8,6 +8,16 @@ const addFolder = (payload) => ({
     payload,
 })
 
+const addFolders = (payload) => ({
+    type: types.ADD_FOLDER,
+    payload,
+})
+
+const setLoading = (payload) => ({
+    type: types.SET_LOADING,
+    payload,
+})
+
 // actions creators
 
 export const createFolder = (data) => (dispatch) => {
@@ -23,3 +33,19 @@ export const createFolder = (data) => (dispatch) => {
             alert(`The /${folderData.name}/ folder was successfully created`);
         });
 };
+
+export const getFolders = (userId) => (dispatch) => {
+    dispatch(setLoading(true));
+
+    fire
+        .firestore()
+        .collection("folders")
+        .where("userId", "==", userId)
+        .get()
+        .then(async (folders) => {
+            const foldersData = await folders.docs.map((folder) => folder.data());
+
+            dispatch(addFolders(foldersData))
+            dispatch(setLoading(false));
+        });
+}
