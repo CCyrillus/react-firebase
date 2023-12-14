@@ -2,18 +2,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolder, faFileAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const ShowItems = ({ title, items, type }) => {
 
-    const navigate = useNavigate;
+    const navigate = useNavigate();
 
     const handleDblClick = (itemId) => {
         if (type === "folder") {
-            navigate(`/dashboard/folder/${itemId}`)
+            navigate(`/react-firebase/dashboard/folder/${itemId}`)
         } else {
             alert("File clicked")
         }
     }
+
 
     return (
         <div className="w-100">
@@ -39,7 +41,11 @@ const ShowItems = ({ title, items, type }) => {
                                     className="mb-3"
                                 />
                             )}
-                            {item.name}
+                            {type === "folder" ? (
+                                <>{item.data.name}</>
+                            ) : (
+                                <>{item.name}</>
+                            )}  
                         </p>
                     )
                 })}

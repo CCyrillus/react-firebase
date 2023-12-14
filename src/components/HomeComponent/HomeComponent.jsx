@@ -1,23 +1,28 @@
-import { useSelector, shallowEqual } from "react-redux"
+import { useEffect } from "react";
+import { getFolders } from "../../redux/actionCreators/fileFoldersActionCreator"
 import ShowItems from "../DashBoardComponent/ShowItems/ShowItems"
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+
+
 
 const HomeComponent = () => {
-    const folders = ["New Folder", "new folder 2"]
-    const files = [{ name: "New File" }, { name: "New File" }]
 
-    const { isLoading, userFolders } = useSelector(
+    const files = [{ name: "New File" }, { name: "New File" }]
+    const dispatch = useDispatch();
+
+    const { isLoading, userFolders, userId } = useSelector(
         (state) => ({
             isLoading: state.filefolders.isLoading,
             userFolders: state.filefolders.userFolders,
+            userId: state.filefolders.userId,
         }),
         shallowEqual
     );
 
     return (
         <div className="col-md-12 w-100">
-
             {
-                isLoading ? (
+                userFolders.data ? (
                     <h1 className="display-1 my-5 text-center">Loading...</h1>
                 ) : (
                     <>

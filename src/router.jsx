@@ -25,20 +25,15 @@ const router = createBrowserRouter([
             {
                 path: "/react-firebase/dashboard/*",
                 element: <DashboardPage />,
-                children: [
-                    {
-                        path: "",
-                        element: <HomeComponent />,
-                    },
-                    {
-                        path: "folder/:folderId",
-                        element: <FolderComponent />,
-                    },
-                ]
             },
-
+            {
+                path: "",
+                element: <HomeComponent />,
+            },
+            
         ],
     },
 ]);
 
 export default router;
+

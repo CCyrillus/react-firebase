@@ -10,6 +10,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(checkIsLoggedIn());
+    
   }, [])
 
 

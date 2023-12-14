@@ -1,4 +1,4 @@
-import React from 'react'
+import useEffectпше  from 'react'
 import { useDispatch } from 'react-redux';
 import { signInUser } from '../../redux/actionCreators/authActionsCreator';
 import { useNavigate } from 'react-router-dom';
@@ -21,7 +21,7 @@ const LoginForm = () => {
 
         dispatch(signInUser(email, password, setSuccess));
     }
-    React.useEffect(() => {
+    useEffect(() => {
         if (success) {
             navigate("/react-firebase/dashboard")
         }

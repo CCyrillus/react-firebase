@@ -1,3 +1,4 @@
+import { faFolderBlank } from "@fortawesome/free-solid-svg-icons";
 import fire from "../../config/firebase";
 import * as types from "../actionsTypes/fileFoldersActionTypes";
 
@@ -35,6 +36,7 @@ export const createFolder = (data) => (dispatch) => {
 };
 
 export const getFolders = (userId) => (dispatch) => {
+
     dispatch(setLoading(true));
 
     fire
@@ -42,10 +44,16 @@ export const getFolders = (userId) => (dispatch) => {
         .collection("folders")
         .where("userId", "==", userId)
         .get()
-        .then(async (folders) => {
-            const foldersData = await folders.docs.map((folder) => folder.data());
+        .then((folders) => {
+            const foldersData = []
 
-            dispatch(addFolders(foldersData))
+            folders.docs.forEach((folder) => {
+                foldersData.push({
+                    data: folder.data(),
+                    docId: folder.id,
+                })
+            });
+            dispatch(addFolders(foldersData));
             dispatch(setLoading(false));
         });
-}
+} 
