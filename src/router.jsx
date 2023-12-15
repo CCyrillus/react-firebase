@@ -4,6 +4,7 @@ import HomeComponent from "./components/HomeComponent/HomeComponent.jsx";
 import FolderComponent from "./components/DashBoardComponent/FolderComponent/FolderComponent.jsx";
 
 import App from './App.jsx'
+import Subbar from "./components/DashBoardComponent/SubBar/Subbar.jsx";
 
 const router = createBrowserRouter([
     {
@@ -25,12 +26,24 @@ const router = createBrowserRouter([
             {
                 path: "/react-firebase/dashboard/*",
                 element: <DashboardPage />,
+                // children: [{
+                //     path: "",
+                //     element: <HomeComponent />,
+                //     children: []
+                // },
+                // // {
+                // //     path: "",
+                // //     element: <Subbar />,
+                // // },
+                // // {
+                // //     path: "folder/:folderId",
+                // //     element: <FolderComponent />,
+                // // },
+                // ]
             },
-            {
-                path: "",
-                element: <HomeComponent />,
-            },
-            
+
+
+
         ],
     },
 ]);

@@ -10,19 +10,24 @@ const CreateFolder = ({ setIsCreateFolderOpen }) => {
 
     const [folderName, setfolderName] = useState("");
 
-    const { userFolders, user, currentFolder } = useSelector(
+    const { userFolders, user, currentFolder, currentFolderData } = useSelector(
         (state) => ({
             userFolders: state.filefolders.userFolders,
             user: state.auth.user,
             currentFolder: state.filefolders.currentFolder,
+            currentFolderData: state.filefolders.userFolders.find(
+                (folder) => folder.docId === state.filefolders.currentFolder
+            ),
         }),
         shallowEqual
     );
 
     const dispatch = useDispatch();
-    
+
     const checkFolderAlreadyPresent = (name) => {
-        const folderPresent = userFolders.find((folder) => folder.name === name);
+        const folderPresent = userFolders
+            .filter((folder) => folder.data.parent === currentFolder)
+            .find((fldr) => fldr.data.name === name);
 
         if (folderPresent) {
             return true
@@ -40,13 +45,15 @@ const CreateFolder = ({ setIsCreateFolderOpen }) => {
 
                     const data = {
                         createdAt: new Date(),
-                        createdBy: user.displayName,
-                        lastAccess: null,
                         name: folderName,
+                        userId: user.uid,
+                        createdBy: user.displayName,
+                        path: currentFolder === "root"
+                            ? []
+                            : [...currentFolderData?.data.path, currentFolder],
+                        lastAccess: null,
                         parent: currentFolder,
                         updatedAt: new Date(),
-                        userId: user.uid,
-                        path: currentFolder === "root" ? [] : ["parentFolderPath!!!"], //TO DO
                     }
 
                     dispatch(createFolder(data));

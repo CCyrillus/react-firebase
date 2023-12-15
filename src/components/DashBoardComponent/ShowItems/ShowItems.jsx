@@ -3,13 +3,16 @@ import { faFolder, faFileAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { changeFolder } from '../../../redux/actionCreators/fileFoldersActionCreator';
 
 const ShowItems = ({ title, items, type }) => {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleDblClick = (itemId) => {
         if (type === "folder") {
+            dispatch(changeFolder(itemId));
             navigate(`/react-firebase/dashboard/folder/${itemId}`)
         } else {
             alert("File clicked")
@@ -20,7 +23,7 @@ const ShowItems = ({ title, items, type }) => {
     return (
         <div className="w-100">
             <h4 className="text-center border-bottom py-2">{title}</h4>
-            <div className="row gap-2 py-4 flex-wrap">
+            <div className="row gap-2 py-4 flex-wrap ms-4">
                 {items.map((item, index) => {
                     return (
                         <p

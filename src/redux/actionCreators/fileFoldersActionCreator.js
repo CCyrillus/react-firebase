@@ -18,6 +18,10 @@ const setLoading = (payload) => ({
     type: types.SET_LOADING,
     payload,
 })
+const setChangeFolder = (payload) => ({
+    type: types.CHANGE_FOLDER,
+    payload,
+})
 
 // actions creators
 
@@ -28,13 +32,16 @@ export const createFolder = (data) => (dispatch) => {
         .add(data)
         .then(async (folder) => {
             const folderData = await (await folder.get()).data();
+            const folderId = folder.id;
 
-            dispatch(addFolder(folderData))
+            dispatch(addFolder({
+                data: folderData,
+                dosId: folderId
+            }))
 
             alert(`The /${folderData.name}/ folder was successfully created`);
         });
 };
-
 export const getFolders = (userId) => (dispatch) => {
 
     dispatch(setLoading(true));
@@ -56,4 +63,7 @@ export const getFolders = (userId) => (dispatch) => {
             dispatch(addFolders(foldersData));
             dispatch(setLoading(false));
         });
+}
+export const changeFolder = (folderId) => (dispatch) => {
+    dispatch(setChangeFolder(folderId))
 } 

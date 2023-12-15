@@ -10,11 +10,10 @@ const HomeComponent = () => {
     const files = [{ name: "New File" }, { name: "New File" }]
     const dispatch = useDispatch();
 
-    const { isLoading, userFolders, userId } = useSelector(
+    const { isLoading, userFolders } = useSelector(
         (state) => ({
             isLoading: state.filefolders.isLoading,
-            userFolders: state.filefolders.userFolders,
-            userId: state.filefolders.userId,
+            userFolders: state.filefolders.userFolders.filter(folder => folder.data.parent==="root"),
         }),
         shallowEqual
     );
@@ -22,7 +21,7 @@ const HomeComponent = () => {
     return (
         <div className="col-md-12 w-100">
             {
-                userFolders.data ? (
+                isLoading ? (
                     <h1 className="display-1 my-5 text-center">Loading...</h1>
                 ) : (
                     <>
