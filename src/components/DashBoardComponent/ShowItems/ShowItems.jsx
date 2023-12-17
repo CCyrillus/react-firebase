@@ -15,7 +15,7 @@ const ShowItems = ({ title, items, type }) => {
             dispatch(changeFolder(itemId));
             navigate(`/react-firebase/dashboard/folder/${itemId}`)
         } else {
-            alert("File clicked")
+            navigate(`/react-firebase/dashboard/file/${itemId}`)
         }
     }
 

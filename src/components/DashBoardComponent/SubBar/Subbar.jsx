@@ -48,7 +48,7 @@ const Subbar = ({ setIsCreateFolderOpen, setIsCreateFileModalOpen }) => {
                                 }
                                 className="breadcrumb-item btn btn-link text-decoration-none"
                             >
-                                Root
+                                / Root
                             </button>
                             {currentFolderData?.data.path.map((folder, index) => (
                                 <button
@@ -66,15 +66,16 @@ const Subbar = ({ setIsCreateFolderOpen, setIsCreateFileModalOpen }) => {
                             ))}
 
 
-                            <li className="breadcrumb-item active my-2 fw-bold">
+                            <li className="breadcrumb-item active py-2 fw-bold">
                                 {currentFolderData?.data.name}
                             </li>
                         </>
                     ) : (
                         <>
-                            <li className="breadcrumb-item active">
-                                Root
-                            </li>
+                            <button style={{minHeight:"40px"}}
+                            className="btn btn-link text-decoration-none fw-bold text-black" disabled>
+                                / Root
+                            </button>
                         </>
                     )}
                 </ol>
@@ -104,7 +105,7 @@ const Subbar = ({ setIsCreateFolderOpen, setIsCreateFileModalOpen }) => {
                     </button>
                 </li>
             </ul>
-        </nav>
+        </nav >
     )
 }
 
