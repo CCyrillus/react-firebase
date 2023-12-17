@@ -6,7 +6,7 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { changeFolder } from "../../../redux/actionCreators/fileFoldersActionCreator"
 import { useState, useEffect } from "react";
 
-const Subbar = ({ setIsCreateFolderOpen }) => {
+const Subbar = ({ setIsCreateFolderOpen, setIsCreateFileModalOpen }) => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -58,7 +58,7 @@ const Subbar = ({ setIsCreateFolderOpen }) => {
                                         setIsChangedLink(`/react-firebase/dashboard/folder/${userFolders.find((fldr) => folder === fldr.docId).docId}`),
                                             setChangedId(userFolders.find((fldr) => folder === fldr.docId).docId)
                                     }
-                                        
+
                                     }
                                 >
                                     {userFolders.find((fldr) => folder === fldr.docId).data.name}
@@ -88,7 +88,10 @@ const Subbar = ({ setIsCreateFolderOpen }) => {
                     </button>
                 </li>
                 <li className="nav-item mx-2">
-                    <button className="btn btn-outline-dark">
+                    <button
+                        className="btn btn-outline-dark"
+                        onClick={() => setIsCreateFileModalOpen(true)}
+                    >
                         <FontAwesomeIcon icon={faFileAlt} /> &nbsp; Create File
                     </button>
                 </li>

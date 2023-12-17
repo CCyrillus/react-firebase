@@ -7,7 +7,7 @@ const FolderComponent = () => {
 
     const { folderId } = useParams();
 
-    const { currentFolderData, childFolders } = useSelector((state) => ({
+    const { currentFolderData, childFolders, childFiles } = useSelector((state) => ({
 
         currentFolderData: state.filefolders.userFolders.find(
             folder => folder.docId === folderId
@@ -16,21 +16,37 @@ const FolderComponent = () => {
         childFolders: state.filefolders.userFolders.filter(
             (folder) => folder.data.parent === folderId
         ),
+        childFiles: state.filefolders.userFiles.filter(
+            (folder) => folder.data.parent === folderId
+        ),
     }), shallowEqual
     );
 
     return (
         <div>
-            {/* FolderComponent: {folderId}{JSON.stringify(currentFolderData)}
-            childFolders: {JSON.stringify(childFolders)} */}
             {
                 childFolders.length > 0 ? (
                     <>
-                        <ShowItems
-                            title={"Create Folders"}
-                            type={"folder"}
-                            items={childFolders} />
+                        {
+                            childFolders.length > 0 && (
+                                <ShowItems
+                                    title={"Create Folders"}
+                                    type={"folder"}
+                                    items={childFolders} />
+                            )
+                        }
+
+                        {
+                            childFiles.length > 0 && (
+                                < ShowItems
+                                    title={"Create Folders"}
+                                    type={"files"}
+                                    items={childFiles.filter((file) => file.data.url === null)}
+                                />
+                            )
+                        }
                     </>
+
                 ) : (
                     <p className="text-center my-5">
                         Empty Folder

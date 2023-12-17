@@ -20,6 +20,7 @@ const ShowItems = ({ title, items, type }) => {
     }
 
 
+
     return (
         <div className="w-100">
             <h4 className="text-center border-bottom py-2">{title}</h4>
@@ -44,11 +45,7 @@ const ShowItems = ({ title, items, type }) => {
                                     className="mb-3"
                                 />
                             )}
-                            {type === "folder" ? (
-                                <>{item.data.name}</>
-                            ) : (
-                                <>{item.name}</>
-                            )}  
+                            {item.data.name}
                         </p>
                     )
                 })}

@@ -7,10 +7,12 @@ import NavBar from '../../components/DashBoardComponent/NavBar/NavBar';
 import Subbar from '../../components/DashBoardComponent/SubBar/Subbar';
 import HomeComponent from '../../components/HomeComponent/HomeComponent';
 
-import { getFolders } from '../../redux/actionCreators/fileFoldersActionCreator';
+import { getFolders, getFiles } from '../../redux/actionCreators/fileFoldersActionCreator';
 import { Route } from 'react-router-dom';
 import FolderComponent from '../../components/DashBoardComponent/FolderComponent/FolderComponent';
-import { Outlet } from "react-router-dom";
+
+import CreateFile from '../../components/DashBoardComponent/CreateFile/CreateFile';
+
 
 const DashboardPage = () => {
   const navigate = useNavigate();
@@ -18,10 +20,14 @@ const DashboardPage = () => {
 
 
   const [isCreateFolderOpen, setIsCreateFolderOpen] = useState(false)
-  const { isLoggedIn, isLoading, userId} = useSelector((state) => ({
+  const [isCreateFileModalOpen, setIsCreateFileModalOpen] = useState(false);
+
+  const { isLoggedIn, isLoading, userId, userFiles, userFolders } = useSelector((state) => ({
+    userFolders: state.filefolders.userFolders,
     isLoggedIn: state.auth.isAuthenticated,
     isLoading: state.filefolders.isLoading,
     userId: state.auth.user.uid,
+    userFiles: state.filefolders.userFiles,
   }),
     shallowEqual
   );
@@ -35,8 +41,9 @@ const DashboardPage = () => {
   useEffect(() => {
     if (isLoading && userId) {
       dispatch(getFolders(userId));
-    }
-  }, [isLoading, userId, dispatch]);
+      dispatch(getFiles(userId));
+    } 
+  }, [dispatch, isLoading, userId]);
 
   return (
     <>
@@ -45,9 +52,15 @@ const DashboardPage = () => {
           <CreateFolder setIsCreateFolderOpen={setIsCreateFolderOpen} />
         )
       }
+      {
+        isCreateFileModalOpen && (
+          <CreateFile setIsCreateFileModalOpen={setIsCreateFileModalOpen} />
+        )
+      }
       <NavBar />
       <Subbar
         setIsCreateFolderOpen={setIsCreateFolderOpen}
+        setIsCreateFileModalOpen={setIsCreateFileModalOpen}
       />
 
       <Routes>

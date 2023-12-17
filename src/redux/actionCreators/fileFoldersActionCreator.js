@@ -1,4 +1,3 @@
-import { faFolderBlank } from "@fortawesome/free-solid-svg-icons";
 import fire from "../../config/firebase";
 import * as types from "../actionsTypes/fileFoldersActionTypes";
 
@@ -20,6 +19,16 @@ const setLoading = (payload) => ({
 })
 const setChangeFolder = (payload) => ({
     type: types.CHANGE_FOLDER,
+    payload,
+})
+// actions FILES
+const addFile = (payload) => ({
+    type: types.CREATE_FILE,
+    payload,
+})
+
+const addFiles = (payload) => ({
+    type: types.ADD_FILE,
     payload,
 })
 
@@ -60,10 +69,54 @@ export const getFolders = (userId) => (dispatch) => {
                     docId: folder.id,
                 })
             });
+            
             dispatch(addFolders(foldersData));
             dispatch(setLoading(false));
         });
 }
 export const changeFolder = (folderId) => (dispatch) => {
     dispatch(setChangeFolder(folderId))
+}
+
+// action creators FILES
+export const getFiles = (userId) => (dispatch) => {
+    fire
+        .firestore()
+        .collection("files")
+        .where("userId", "==", userId)
+        .get()
+        .then((files) => {
+            const arr = [];
+
+            files.docs.forEach((file) => {
+                arr.push({
+                    data: file.data(),
+                    docId: file.id,
+                })
+            })
+            dispatch(addFiles(arr));
+        })
+}
+
+export const createFile = (data, setSuccess) => (dispatch) => {
+    console.log(data, setSuccess)
+    fire
+        .firestore()
+        .collection("files")
+        .add(data)
+        .then(async (file) => {
+            console.log(file)
+            const fileData = await (await file.get()).data();
+            const fileId = file.id;
+
+
+            alert(`The ${fileData.name} file was successfully created`);
+            dispatch(addFile({ data: fileData, docId: fileId }));
+            setSuccess(true);
+        })
+        .catch((error) => {
+            setSuccess(false);
+            console.log(error)
+        })
+
 } 
