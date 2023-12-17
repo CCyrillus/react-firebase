@@ -1,4 +1,3 @@
-# React + Vite
 ## PREVIEW-VITE-LINK:
 [ccyrillus.github.io/react-firebase/](https://ccyrillus.github.io/react-firebase/)
 
