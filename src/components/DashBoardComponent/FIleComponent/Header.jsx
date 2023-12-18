@@ -35,7 +35,7 @@ const Header = ({ fileName, fileData, prevFileData, fileId }) => {
                 <li className="nav-item">
                     <button
                         onClick={() => navigate(-1)}
-                        className="btn btn-dark"
+                        className="btn btn-dark ms-2"
                     >
                         <FontAwesomeIcon icon={faArrowLeftLong} /> Go Back
                     </button>

@@ -33,7 +33,7 @@ const NavigationComponent = () => {
                         <li className="nav-item">
                             <button
                                 to="/react-firebase/logout"
-                                className="btn btn-success btn-sm"
+                                className="btn btn-danger btn-sm"
                                 onClick={() => dispatch(SignOutUser())}
                             >
                                 Logout

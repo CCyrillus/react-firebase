@@ -13,15 +13,17 @@ import FolderComponent from '../../components/DashBoardComponent/FolderComponent
 import CreateFolder from '../../components/DashBoardComponent/CreateFolder/CreateFolder';
 import CreateFile from '../../components/DashBoardComponent/CreateFile/CreateFile';
 import FileComponent from '../../components/DashBoardComponent/FIleComponent/FileComponent';
+import UploadFile from '../../components/DashBoardComponent/UploadFIle/UploadFile.';
 
 
 const DashboardPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {pathname}= useLocation();
+  const { pathname } = useLocation();
 
   const [isCreateFolderOpen, setIsCreateFolderOpen] = useState(false)
   const [isCreateFileModalOpen, setIsCreateFileModalOpen] = useState(false);
+  const [isFileUploadModalOpen, setIsFileUploadModalOpen] = useState(false);
 
   const [showSubBar, setShowSubBar] = useState(true);
 
@@ -66,12 +68,18 @@ const DashboardPage = () => {
           <CreateFile setIsCreateFileModalOpen={setIsCreateFileModalOpen} />
         )
       }
+      {
+        isFileUploadModalOpen && (
+          <UploadFile setIsFileUploadModalOpen={setIsFileUploadModalOpen} />
+        )
+      }
       <NavBar />
       {showSubBar
         && (
           <Subbar
             setIsCreateFolderOpen={setIsCreateFolderOpen}
             setIsCreateFileModalOpen={setIsCreateFileModalOpen}
+            setIsFileUploadModalOpen={setIsFileUploadModalOpen}
           />
         )
       }

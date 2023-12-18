@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 
 import Header from "./Header"
-import { useNavigation, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useSelector, shallowEqual } from "react-redux";
 import CodeEditor from "./CodeEditor";
 
 
 const FileComponent = () => {
 
-    const navigate = useNavigation();
+    const navigate = useNavigate();
     const { fileId } = useParams();
     const [fileData, setFileData] = useState("");
 
@@ -40,20 +40,38 @@ const FileComponent = () => {
     if (isAuthenticated)
         return (
             <div>
-                <Header
-                    fileName={currentFile?.data?.data}
-                    fileData={fileData}
-                    prevFileData={prevFileData}
-                    fileId={fileId}
-                />
-                <CodeEditor
-                    fileName={currentFile?.data?.data}
-                    data={fileData}
-                    setData={setFileData}
-                />
+                {
+                    fileData !== null ? (
+                        <>
+                            <Header
+                                fileName={currentFile?.data?.name}
+                                fileData={fileData}
+                                prevFileData={prevFileData}
+                                fileId={fileId}
+                            />
+                            <CodeEditor
+                                fileName={currentFile?.data?.name}
+                                data={fileData}
+                                setData={setFileData}
+                            /></>
+                    ) : (
+                        <>
+                            <h1 className="display-1 my-5 text-center">
+                                Uploaded files preview in work
+                            </h1>
+                            <button
+                                onClick={() =>  navigate(-1) }
+                                className="btn btn-primary"
+                            >
+                                BACK
+                            </button>
+                        </>
+                    )
+                }
+
             </div>
         )
-    return<div>Login First</div>
+    return <div>Login First</div>
 }
 
 export default FileComponent

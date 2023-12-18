@@ -24,14 +24,21 @@ const HomeComponent = () => {
                 ) : (
                     <>
                         <ShowItems
-                            title={"Create Folders"}
+                            title={"Created Folders"}
                             type={"folder"}
                             items={userFolders} />
                         <ShowItems
-                            title={"Create Files"}
+                            title={"Created Files"}
                             type={"file"}
                             items={
                                 userFiles.filter((file) => file.data.url === null)
+                            }
+                        />
+                        <ShowItems
+                            title={"Uploaded Files"}
+                            type={"file"}
+                            items={
+                                userFiles.filter((file) => file.data.data === null)
                             }
                         />
                     </>

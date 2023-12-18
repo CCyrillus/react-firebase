@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./CodeEditor.css";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { duotoneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { coldarkCold } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 
 const CodeEditor = ({ fileName, data, setData }) => {
@@ -58,7 +58,7 @@ const CodeEditor = ({ fileName, data, setData }) => {
                     <SyntaxHighlighter
                         language={codes[fileName.split(".")[1]]}
                         showLineNumbers
-                        style={duotoneLight}
+                        style={coldarkCold}
                         wrapLines
                         startingLineNumber={1}
                     >

@@ -35,7 +35,7 @@ const NavBar = () => {
             <li className="nav-item">
               <button
                 to="/react-firebase/logout"
-                className="btn btn-success"
+                className="btn btn-danger"
                 onClick={() => dispatch(SignOutUser())}
               >
                 Logout

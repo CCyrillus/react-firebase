@@ -6,7 +6,7 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { changeFolder } from "../../../redux/actionCreators/fileFoldersActionCreator"
 import { useState, useEffect } from "react";
 
-const Subbar = ({ setIsCreateFolderOpen, setIsCreateFileModalOpen }) => {
+const Subbar = ({ setIsCreateFolderOpen, setIsCreateFileModalOpen, setIsFileUploadModalOpen }) => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -72,8 +72,8 @@ const Subbar = ({ setIsCreateFolderOpen, setIsCreateFileModalOpen }) => {
                         </>
                     ) : (
                         <>
-                            <button style={{minHeight:"40px"}}
-                            className="btn btn-link text-decoration-none fw-bold text-black" disabled>
+                            <button style={{ minHeight: "40px" }}
+                                className="btn btn-link text-decoration-none fw-bold text-black" disabled>
                                 / Root
                             </button>
                         </>
@@ -84,11 +84,11 @@ const Subbar = ({ setIsCreateFolderOpen, setIsCreateFileModalOpen }) => {
             <ul className="navbar-nav ms-auto me-5">
                 <li className="nav-item mx-2">
 
-                    <button 
-                    className="btn btn-outline-dark"
-                    onClick={()=>{
-                        alert("FEATURE IN WORK ....")
-                    }}
+                    <button
+                        className="btn btn-outline-dark"
+                        onClick={() => {
+                            setIsFileUploadModalOpen(true)
+                        }}
                     >
                         <FontAwesomeIcon icon={faUpload} /> &nbsp; Upload File
                     </button>

@@ -30,7 +30,7 @@ const FolderComponent = () => {
                         {
                             childFolders.length > 0 && (
                                 <ShowItems
-                                    title={"Create Folders"}
+                                    title={"Created Folders"}
                                     type={"folder"}
                                     items={childFolders} />
                             )
@@ -39,9 +39,18 @@ const FolderComponent = () => {
                         {
                             childFiles.length > 0 && (
                                 < ShowItems
-                                    title={"Create Folders"}
+                                    title={"Created Files"}
                                     type={"files"}
                                     items={childFiles.filter((file) => file.data.url === null)}
+                                />
+                            )
+                        }
+                        {
+                            childFiles.length > 0 && (
+                                < ShowItems
+                                    title={"Uploaded Files"}
+                                    type={"files"}
+                                    items={childFiles.filter((file) => file.data.data === null)}
                                 />
                             )
                         }
