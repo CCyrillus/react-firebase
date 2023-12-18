@@ -84,7 +84,12 @@ const Subbar = ({ setIsCreateFolderOpen, setIsCreateFileModalOpen }) => {
             <ul className="navbar-nav ms-auto me-5">
                 <li className="nav-item mx-2">
 
-                    <button className="btn btn-outline-dark">
+                    <button 
+                    className="btn btn-outline-dark"
+                    onClick={()=>{
+                        alert("FEATURE IN WORK ....")
+                    }}
+                    >
                         <FontAwesomeIcon icon={faUpload} /> &nbsp; Upload File
                     </button>
                 </li>
