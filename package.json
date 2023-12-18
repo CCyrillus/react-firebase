@@ -27,6 +27,7 @@
     "react-dom": "^16.14.0",
     "react-redux": "^7.2.9",
     "react-router-dom": "^6.20.0",
+    "react-syntax-highlighter": "^15.5.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.2",
     "vite-react-jsx": "^1.1.2"

@@ -31,6 +31,10 @@ const addFiles = (payload) => ({
     type: types.ADD_FILE,
     payload,
 })
+const setFileData = (payload) => ({
+    type: types.SET_FILE_DATA,
+    payload,
+})
 
 // actions creators
 
@@ -69,7 +73,7 @@ export const getFolders = (userId) => (dispatch) => {
                     docId: folder.id,
                 })
             });
-            
+
             dispatch(addFolders(foldersData));
             dispatch(setLoading(false));
         });
@@ -99,7 +103,7 @@ export const getFiles = (userId) => (dispatch) => {
 }
 
 export const createFile = (data, setSuccess) => (dispatch) => {
-    console.log(data, setSuccess)
+    console.log(data)
     fire
         .firestore()
         .collection("files")
@@ -119,4 +123,21 @@ export const createFile = (data, setSuccess) => (dispatch) => {
             console.log(error)
         })
 
-} 
+}
+
+export const updateFileData = (fileId, data) => (dispatch) => {
+
+    fire
+        .firestore()
+        .collection("files")
+        .doc(fileId)
+        .update({data})
+        .then(() => {
+            console.log("fileId::::", fileId)
+            console.log("data::::", data)
+            dispatch(setFileData({ fileId, data }));
+            alert("File saved successfully!")
+        }).catch((error) => {
+            console.log(error)
+        })
+}

@@ -1,9 +1,7 @@
 import ShowItems from "../DashBoardComponent/ShowItems/ShowItems"
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { shallowEqual,  useSelector } from "react-redux";
 
 const HomeComponent = () => {
-
-    const dispatch = useDispatch();
 
     const { isLoading, userFolders, userFiles } = useSelector(
         (state) => ({

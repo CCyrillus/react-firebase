@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { shallowEqual, useSelector, useDispatch } from 'react-redux';
-import { Routes, useNavigate } from 'react-router-dom';
+import { Routes, useLocation, useNavigate } from 'react-router-dom';
 
 import NavBar from '../../components/DashBoardComponent/NavBar/NavBar';
 import Subbar from '../../components/DashBoardComponent/SubBar/Subbar';
@@ -18,7 +18,7 @@ import FileComponent from '../../components/DashBoardComponent/FIleComponent/Fil
 const DashboardPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const {pathname}= useLocation();
 
   const [isCreateFolderOpen, setIsCreateFolderOpen] = useState(false)
   const [isCreateFileModalOpen, setIsCreateFileModalOpen] = useState(false);
@@ -47,12 +47,12 @@ const DashboardPage = () => {
     }
   }, [dispatch, isLoading, userId]);
   useEffect(() => {
-    if (window.location.pathname.includes("/file/")) {
+    if (pathname.includes("/file/")) {
       setShowSubBar(false);
     } else {
       setShowSubBar(true)
     }
-  }, [window.location.pathname])
+  }, [pathname])
 
   return (
     <>

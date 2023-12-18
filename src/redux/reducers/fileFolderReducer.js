@@ -41,6 +41,18 @@ const fileFolderReducer = (state = initialState, action) => {
                 ...state,
                 userFiles: [...state.userFiles, action.payload],
             };
+        case types.SET_FILE_DATA:
+            const { fileId, data } = action.payload;
+            
+            const allFiles = state.userFiles;
+            let currentFile = allFiles.find((file) => file.docId === fileId);
+            currentFile.data.data = data;
+            return {
+                ...state,
+                userFiles: state.userFiles.map((file) => 
+                file.docId === fileId ? currentFile : file
+                ),
+            };
         default: return state;
     }
 }

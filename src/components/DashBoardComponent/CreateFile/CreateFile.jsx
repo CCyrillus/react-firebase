@@ -56,7 +56,6 @@ const CreateFile = ({ setIsCreateFileModalOpen }) => {
                 if (fileName.split(".").length > 1) {
                     extension = true;
                 }
-                console.log(extension)
                 if (!checkFileAlreadyPresent(fileName, extension)) {
                     const data = {
                         createdAt: new Date(),
