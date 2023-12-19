@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { shallowEqual, useSelector, useDispatch } from 'react-redux'
 import { createFile } from '../../../redux/actionCreators/fileFoldersActionCreator'
 
-
-
+import { toast } from 'react-toastify';
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -51,7 +50,6 @@ const CreateFile = ({ setIsCreateFileModalOpen }) => {
         e.preventDefault();
         if (fileName) {
             if (fileName.length > 3) {
-                //Перевірка формату файла
                 let extension = false;
                 if (fileName.split(".").length > 1) {
                     extension = true;
@@ -74,15 +72,15 @@ const CreateFile = ({ setIsCreateFileModalOpen }) => {
                     }
                     dispatch(createFile(data, setSuccess));
                 } else {
-                    alert(`${fileName} has alredy been created!`);
+                    toast.success(`${fileName} has alredy been created!`);
                 }
             }
             if (fileName.length < 4) {
-                alert(`The file name must be ate least 4 characters`);
+                toast.error(`The file name must be ate least 4 characters`);
             }
 
         } else {
-            alert('The file name cannot be empty');
+            toast.error('The file name cannot be empty');
         }
 
     }

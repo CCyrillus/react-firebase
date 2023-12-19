@@ -1,5 +1,7 @@
 import * as types from "../actionsTypes/authActionsTypes";
-import fire from "../../config/firebase"
+import fire from "../../config/firebase";
+
+import { toast } from 'react-toastify';
 
 const loginUser = (payload) => {
     return {
@@ -28,7 +30,7 @@ export const signInUser = (email, password, setSucces) => (dispatch) => {
             setSucces(true);
         })
         .catch((error) => {
-            alert("Invalid email or password!")
+            toast.error("Invalid email or password!")
         })
 }
 export const signUpUser = (name, email, password, setSucces) => (dispatch) => {
@@ -52,13 +54,13 @@ export const signUpUser = (name, email, password, setSucces) => (dispatch) => {
         })
         .catch((error) => {
             if (error.code === "auth/email-already-in-use") {
-                alert("This accont alredy registered!")
+                toast.error("This accont alredy registered!")
             }
             if (error.code === "auth/invalid-email") {
-                alert("Invalid email!")
+                toast.error("Invalid email!")
             }
             if (error.code === "auth/weak-password") {
-                alert("Weak password!")
+                toast.error("Weak password!")
             }
         })
 }

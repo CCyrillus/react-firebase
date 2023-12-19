@@ -38,7 +38,7 @@ const FileComponent = () => {
 
     useEffect(() => {
         if (!isAuthenticated) {
-            navigate("/react-firebase/")
+            navigate("/react-firebase/");
         }
     }, [isAuthenticated])
 

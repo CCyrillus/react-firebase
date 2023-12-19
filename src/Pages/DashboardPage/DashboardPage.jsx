@@ -14,7 +14,7 @@ import CreateFolder from '../../components/DashBoardComponent/CreateFolder/Creat
 import CreateFile from '../../components/DashBoardComponent/CreateFile/CreateFile';
 import FileComponent from '../../components/DashBoardComponent/FIleComponent/FileComponent';
 import UploadFile from '../../components/DashBoardComponent/UploadFIle/UploadFile.';
-
+import { toast } from 'react-toastify';
 
 const DashboardPage = () => {
   const navigate = useNavigate();
@@ -38,6 +38,7 @@ const DashboardPage = () => {
   useEffect(() => {
     if (!isLoggedIn) {
       navigate("/react-firebase/")
+      toast.error("Need to Login or Register")
     }
   }, []);
   useEffect(() => {

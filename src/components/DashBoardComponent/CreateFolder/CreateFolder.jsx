@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
 import { shallowEqual, useSelector, useDispatch } from 'react-redux'
 import { createFolder } from '../../../redux/actionCreators/fileFoldersActionCreator'
-
+import { toast } from 'react-toastify';
 
 const CreateFolder = ({ setIsCreateFolderOpen }) => {
 
@@ -58,15 +58,15 @@ const CreateFolder = ({ setIsCreateFolderOpen }) => {
 
                     dispatch(createFolder(data));
                 } else {
-                    alert(`The /${folderName}/ has alredy been created!`);
+                    toast.error(`The /${folderName}/ has alredy been created!`);
                 }
             }
             if (folderName.length < 4) {
-                alert(`The folder name must be ate least 4 characters`);
+                toast.error(`The folder name must be ate least 4 characters`);
             }
 
         } else {
-            alert('The folder name cannot be empty');
+            toast.error('The folder name cannot be empty');
         }
 
     }

@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { shallowEqual, useSelector, useDispatch } from 'react-redux'
+import { uploadFile } from '../../../redux/actionCreators/fileFoldersActionCreator';
+
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { uploadFile } from '../../../redux/actionCreators/fileFoldersActionCreator';
+import { toast } from 'react-toastify';
 
 const UploadFile = ({ setIsFileUploadModalOpen }) => {
 
@@ -58,10 +60,10 @@ const UploadFile = ({ setIsFileUploadModalOpen }) => {
                 }
                 dispatch(uploadFile(file, data, setSuccess));
             } else {
-                alert(`${file} has alredy been created!`);
+                toast.error(`${file} has alredy been created!`);
             }
         } else {
-            alert('You did not select a file to upload');
+            toast.error('You did not select a file to upload');
         }
 
     }

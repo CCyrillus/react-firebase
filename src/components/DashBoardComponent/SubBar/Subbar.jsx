@@ -1,10 +1,11 @@
-import "./Subbar.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faUpload, faFileAlt, faFolderPlus } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from "react-router-dom"
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { changeFolder } from "../../../redux/actionCreators/fileFoldersActionCreator"
 import { useState, useEffect } from "react";
+
+import "./Subbar.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faUpload, faFileAlt, faFolderPlus } from "@fortawesome/free-solid-svg-icons"
 
 const Subbar = ({ setIsCreateFolderOpen, setIsCreateFileModalOpen, setIsFileUploadModalOpen }) => {
 

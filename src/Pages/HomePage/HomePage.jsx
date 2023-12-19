@@ -13,7 +13,7 @@ const HomePage = () => {
             <h1 className="display-1 my-5 text-center">
                 REACT FILE MANAGE HERE
             </h1>
-            <h1 className="display-1 my-5 text-center ">
+            <h1 className="display-1 my-5 text-center">
                 <Link to="/react-firebase/dashboard">
                     <FontAwesomeIcon icon={faDatabase}
                         beatFade

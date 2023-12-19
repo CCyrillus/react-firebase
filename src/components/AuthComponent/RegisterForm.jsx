@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 import { signUpUser } from '../../redux/actionCreators/authActionsCreator';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const RegisterForm = () => {
 
@@ -17,11 +18,11 @@ const RegisterForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!email || !password || !passwordConfirm || !name) {
-            alert("Please fill form correct");
+            toast.error("Please fill form correct");
             return;
         }
         if (password !== passwordConfirm) {
-            alert("I ncorrect password");
+            toast.error("Incorrect password");
             return;
         }
 

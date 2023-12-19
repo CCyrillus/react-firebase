@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { signInUser } from '../../redux/actionCreators/authActionsCreator';
 import { useNavigate } from 'react-router-dom';
 
+import { toast } from 'react-toastify';
+
 const LoginForm = () => {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
@@ -16,7 +18,7 @@ const LoginForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!email || !password) {
-            alert("Please fill form correct");
+            toast.error("Please fill form correct");
             return;
         }
 

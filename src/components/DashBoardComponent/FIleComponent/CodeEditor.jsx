@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./CodeEditor.css";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -23,25 +22,6 @@ const CodeEditor = ({ fileName, data, setData }) => {
         json: "javascript",
     };
 
-    // const handlKeyDown = (evt) => {
-    //     let value = content, selStartPos = evt.currentTarget.selectionStart;
-
-    //     console.log("evt.currentTarget",evt.currentTarget);
-
-    //     if (evtkey === "Tab") {
-    //         value =
-    //             value.substring(0, selStartPos) +
-    //             "   " +
-    //             value.value.substring(selStartPos, value.length);
-
-    //         evt.currentTarget.selectionStart = selStartPos + 3;
-    //         evt.currentTarget.selectionEnd = selStartPos + 4;
-    //         enablePatches.preventDefault();
-
-    //         setData(value);
-    //     }
-    // }
-
     return (
         <div className="row px-5 mt-3">
 
@@ -50,7 +30,6 @@ const CodeEditor = ({ fileName, data, setData }) => {
                 <textarea
                     value={data}
                     className="code-input w-100"
-                    // onKeyDown={handlKeyDown}
                     onChange={(e) => setData(e.target.value)}
                 />
 
