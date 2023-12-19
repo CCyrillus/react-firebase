@@ -7,7 +7,7 @@ const HomeComponent = () => {
         (state) => ({
             isLoading: state.filefolders.isLoading,
             userFiles: state.filefolders.userFiles.filter(
-                (folder) => folder.data.parent === "root"
+                (file) => file.data.parent === "root"
             ),
             userFolders: state.filefolders.userFolders.filter(
                 (folder) => folder.data.parent === "root"
@@ -18,8 +18,7 @@ const HomeComponent = () => {
 
     return (
         <div className="col-md-12 w-100">
-            {
-                isLoading ? (
+            {isLoading ? (
                     <h1 className="display-1 my-5 text-center">Loading...</h1>
                 ) : (
                     <>

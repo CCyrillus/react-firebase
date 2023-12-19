@@ -22,10 +22,12 @@ const FolderComponent = () => {
     }), shallowEqual
     );
 
+    const createdFiles = childFiles && childFiles.filter((file) => file.data.url === null)
+    const uploadedFiles = childFiles && childFiles.filter((file) => file.data.data === null)
     return (
         <div>
             {
-                childFolders.length > 0 ? (
+                childFolders.length > 0 || childFiles.length > 0 ? (
                     <>
                         {
                             childFolders.length > 0 && (
@@ -37,20 +39,20 @@ const FolderComponent = () => {
                         }
 
                         {
-                            childFiles.length > 0 && (
+                            createdFiles.length > 0 && (
                                 < ShowItems
                                     title={"Created Files"}
                                     type={"files"}
-                                    items={childFiles.filter((file) => file.data.url === null)}
+                                    items={createdFiles}
                                 />
                             )
                         }
                         {
-                            childFiles.length > 0 && (
+                            uploadedFiles.length > 0 && (
                                 < ShowItems
                                     title={"Uploaded Files"}
                                     type={"files"}
-                                    items={childFiles.filter((file) => file.data.data === null)}
+                                    items={uploadedFiles}
                                 />
                             )
                         }

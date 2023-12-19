@@ -27,12 +27,10 @@ const DashboardPage = () => {
 
   const [showSubBar, setShowSubBar] = useState(true);
 
-  const { isLoggedIn, isLoading, userId, userFiles, userFolders } = useSelector((state) => ({
-    userFolders: state.filefolders.userFolders,
+  const { isLoggedIn, isLoading, userId } = useSelector((state) => ({
     isLoggedIn: state.auth.isAuthenticated,
     isLoading: state.filefolders.isLoading,
     userId: state.auth.user.uid,
-    userFiles: state.filefolders.userFiles,
   }),
     shallowEqual
   );

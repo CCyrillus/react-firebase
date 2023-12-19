@@ -28,7 +28,7 @@ const ShowItems = ({ title, items, type }) => {
                 {items.map((item, index) => {
                     return (
                         <p
-                            className='col-md-2 py-3 text-center border d-flex flex-column'
+                            className='col-md-3 py-3 text-center border d-flex flex-column'
                             key={index * Math.random()}
                             onDoubleClick={() => handleDblClick(item.docId)}
                         >
@@ -37,18 +37,29 @@ const ShowItems = ({ title, items, type }) => {
                                     icon={faFolder}
                                     size="4x"
                                     className="mb-3"
+                                    style={{ color: "#ffd561", }}
                                 />
                             ) : (
                                 <FontAwesomeIcon
                                     icon={faFileAlt}
                                     size="4x"
                                     className="mb-3"
+                                    style={{ color: "#6297f4", }}
                                 />
                             )}
-                            {item.data.name}
+                            {item.data.name.length > 20 ? (
+                                item.data.name.slice(0, 20) + "... ." + (item.data.extension)
+                            ) : (
+                                item.data.name
+                            )}
                         </p>
                     )
                 })}
+                {/* {!items.length && (
+                    <p className="text-center my-5">
+                        No downloaded files ...
+                    </p>
+                )} */}
             </div>
         </div>
     )

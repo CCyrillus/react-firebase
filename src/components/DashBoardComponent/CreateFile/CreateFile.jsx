@@ -31,7 +31,7 @@ const CreateFile = ({ setIsCreateFileModalOpen }) => {
 
     const checkFileAlreadyPresent = (name, extension) => {
 
-        if(!extension){
+        if (!extension) {
             name = name + ".txt";
         }
 
@@ -104,7 +104,10 @@ const CreateFile = ({ setIsCreateFileModalOpen }) => {
                 <div className="col-md-4 mt-5 bg-white rounded p-4">
                     <div className="d-flex justify-content-between">
                         <h4>Create File</h4>
-                        <button className="btn btn-outline-light" onClick={() => setIsCreateFileModalOpen(false)}>
+                        <button
+                            className="btn btn-outline-light"
+                            onClick={() => setIsCreateFileModalOpen(false)}
+                        >
                             <FontAwesomeIcon
                                 icon={faTimes}
                                 className="text-black"
